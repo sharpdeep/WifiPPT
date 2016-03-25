@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+
+    <title>WifiPPT Usage</title>
+    <script language="javascript">
+        var xmlhttp;
+        if (window.XMLHttpRequest){
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        }
+        else{
+            // code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        function ajax(url){
+            xmlhttp.onreadystatechange  = function (){
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                    document.getElementById('current_page').textContent = xmlhttp.responseText;
+                }
+            };
+            xmlhttp.open("GET","/"+url,true);
+            xmlhttp.send(null);
+        }
+
+    </script>
+</head>
+<body>
+    <center>
+        <button><img algin='center' onclick="ajax('prepage')" src="/static/image/pre.png" style="width:250px;height:100px"></button>
+        <button><img algin='center' onclick="ajax('click')" src="/static/image/click.png" style="width:250px;height:230px;background-size:100% 100%;margin-top:0px"></button>
+        <button><img align="center" onclick="ajax('nextpage')" src="/static/image/next.png" style="width:250px;height:100px"></button>
+        <h3>进度：<span id="current_page">1</span> / $total_page</h3>
+    </center>
+</body>
+</html>
