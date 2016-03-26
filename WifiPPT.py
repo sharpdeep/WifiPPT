@@ -61,6 +61,5 @@ if __name__ == '__main__':
 			f.write(Template(ft.read()).substitute(host=HOST,port=PORT))
 
 	httpd = socketserver.ThreadingTCPServer(('',PORT),WifiPPTHandler)
-	# webbrowser.open_new_tab('usage.html')
-	# webbrowser.open_new_tab('http://%s:%s'%(HOST,PORT))
+	webbrowser.open_new_tab('usage.html')
 	httpd.serve_forever()
